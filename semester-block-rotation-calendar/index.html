@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Semester Block Rotation Calendar</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand">
+        <div class="title">Semester Block Rotation Calendar</div>
+        <div class="subtitle" id="semesterSubtitle"></div>
+      </div>
+
+      <div class="actions">
+        <button id="exportBtn" type="button">Export</button>
+        <label class="importLabel">
+          Import
+          <input id="importFile" type="file" accept="application/json" />
+        </label>
+        <button id="resetBtn" type="button" class="danger">Reset</button>
+      </div>
+    </header>
+
+    <main class="page">
+      <section class="legend">
+        <div class="legendItem">
+          <span class="swatch swatchInstructional"></span>
+          <span>Instructional day</span>
+        </div>
+        <div class="legendItem">
+          <span class="swatch swatchOff"></span>
+          <span>Off / Holiday</span>
+        </div>
+      </section>
+
+      <section id="calendar" class="calendar"></section>
+    </main>
+
+    <dialog id="editorDialog" class="modal" aria-label="Edit block schedule">
+      <form id="editorForm" method="dialog" class="modalBody">
+        <div class="modalHeader">
+          <div>
+            <div class="modalTitle" id="editorTitle"></div>
+            <div class="modalMeta" id="editorMeta"></div>
+          </div>
+          <button type="button" class="closeBtn" id="closeBtn" aria-label="Close">Close</button>
+        </div>
+
+        <div class="modalGrid" id="editorGrid"></div>
+
+        <div class="modalFooter">
+          <button type="button" id="clearTemplateBtn" class="ghost">Clear inputs</button>
+          <button type="submit" id="saveBtn">Save (applies to all same rotation-day dates)</button>
+        </div>
+      </form>
+    </dialog>
+
+    <script src="app.js"></script>
+  </body>
+</html>
+

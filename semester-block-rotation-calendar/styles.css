@@ -1,0 +1,387 @@
+:root {
+  /* Light mode palette */
+  --bg: #f5f7ff;
+  --panel: #ffffff;
+  --muted: #55647f;
+  --text: #0b1630;
+  --border: rgba(11, 22, 48, 0.12);
+  --instructional: rgba(0, 160, 90, 0.12);
+  --off: rgba(255, 170, 0, 0.16);
+  --danger: #cc2f2f;
+  --primary: #1d7cff;
+  --shadow: 0 12px 40px rgba(16, 24, 40, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial,
+    "Apple Color Emoji", "Segoe UI Emoji";
+  background: radial-gradient(1200px 900px at 10% 0%, #dbe7ff 0%, var(--bg) 55%);
+  color: var(--text);
+}
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 14px 18px;
+  background: rgba(245, 247, 255, 0.8);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(8px);
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.title {
+  font-weight: 750;
+  letter-spacing: 0.2px;
+  font-size: 14px;
+}
+
+.subtitle {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+button {
+  border: 1px solid var(--border);
+  background: rgba(11, 22, 48, 0.03);
+  color: var(--text);
+  border-radius: 10px;
+  padding: 10px 12px;
+  cursor: pointer;
+}
+
+button:hover {
+  border-color: rgba(74, 163, 255, 0.45);
+}
+
+button.danger {
+  border-color: rgba(255, 77, 77, 0.4);
+  color: #8e2020;
+}
+
+.danger:hover {
+  border-color: rgba(255, 77, 77, 0.75);
+}
+
+.ghost {
+  background: transparent;
+}
+
+.primary {
+  border-color: rgba(74, 163, 255, 0.55);
+}
+
+.importLabel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--muted);
+  border: 1px dashed var(--border);
+  padding: 10px 12px;
+  border-radius: 10px;
+}
+
+.importLabel input {
+  display: none;
+}
+
+.page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 18px 14px 60px;
+}
+
+.legend {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  padding: 10px 2px 14px;
+  flex-wrap: wrap;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.swatch {
+  width: 14px;
+  height: 14px;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+  background: transparent;
+}
+
+.swatchInstructional {
+  background: var(--instructional);
+}
+
+.swatchOff {
+  background: var(--off);
+}
+
+.calendar {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.month {
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.78);
+  border-radius: 16px;
+  padding: 12px;
+  box-shadow: var(--shadow);
+}
+
+.monthHeader {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 4px 6px 10px;
+}
+
+.monthTitle {
+  font-weight: 800;
+  letter-spacing: 0.2px;
+}
+
+.monthMeta {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.dowRow {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+  padding: 0 6px 10px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.daysGrid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+  padding: 0 6px 4px;
+}
+
+.dayCell {
+  min-height: 72px;
+  border: 1px solid rgba(11, 22, 48, 0.08);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.65);
+  padding: 8px 8px 10px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.dayCell.filledDay {
+  background: rgba(255, 226, 133, 0.35);
+  border-color: rgba(255, 186, 70, 0.55);
+}
+
+.dayCell.filledDay:hover {
+  border-color: rgba(255, 186, 70, 0.75);
+}
+
+.dayCell.advisingDay {
+  background: rgba(255, 226, 133, 0.48);
+  border-color: rgba(255, 186, 70, 0.85);
+}
+
+.dayCell:hover {
+  border-color: rgba(29, 124, 255, 0.32);
+}
+
+.dayCell.off {
+  cursor: default;
+  opacity: 1;
+  background: var(--off);
+}
+
+.dayCell .dateRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.dateNum {
+  font-weight: 750;
+  font-size: 12px;
+}
+
+.rotationBadge {
+  font-size: 11px;
+  border: 1px solid var(--border);
+  background: rgba(29, 124, 255, 0.12);
+  color: #0c3c7b;
+  padding: 4px 8px;
+  border-radius: 999px;
+}
+
+.rotationBadge.empty {
+  background: transparent;
+  color: var(--muted);
+}
+
+.blockMini {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.miniBlock {
+  font-size: 11px;
+  line-height: 1.1;
+  padding: 5px 7px;
+  border-radius: 12px;
+  border: 1px solid rgba(11, 22, 48, 0.08);
+  background: rgba(11, 22, 48, 0.02);
+  color: var(--muted);
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.miniBlock.filled {
+  color: #0a2b55;
+  border-color: rgba(29, 124, 255, 0.35);
+  background: rgba(29, 124, 255, 0.14);
+}
+
+.miniBlock .period {
+  color: var(--muted);
+  margin-right: 6px;
+  font-weight: 650;
+}
+
+.modal::backdrop {
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.modal {
+  width: min(900px, 96vw);
+  border: none;
+  padding: 0;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.98);
+  color: var(--text);
+  box-shadow: var(--shadow);
+}
+
+.modalBody {
+  padding: 14px;
+}
+
+.modalHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.modalTitle {
+  font-weight: 850;
+  letter-spacing: 0.2px;
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+
+.modalMeta {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.closeBtn {
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 8px 10px;
+}
+
+.modalGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  padding: 4px 0 12px;
+}
+
+@media (max-width: 720px) {
+  .modalGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.fieldCard {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.7);
+  padding: 10px;
+}
+
+.fieldLabel {
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 10px 10px;
+  border-radius: 12px;
+  border: 1px solid rgba(11, 22, 48, 0.15);
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--text);
+  outline: none;
+}
+
+input[type="text"]:focus {
+  border-color: rgba(74, 163, 255, 0.6);
+}
+
+.modalFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+}
+
+.modalFooter button {
+  padding: 10px 12px;
+}
+
