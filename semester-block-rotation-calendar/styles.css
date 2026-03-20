@@ -229,6 +229,11 @@ button.danger {
   background: var(--off);
 }
 
+.dayCell.weekend {
+  background: rgba(120, 130, 150, 0.2);
+  border-color: rgba(95, 105, 125, 0.45);
+}
+
 .dayCell .dateRow {
   display: flex;
   align-items: center;

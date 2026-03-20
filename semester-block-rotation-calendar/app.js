@@ -13,6 +13,7 @@ const SEMESTER = {
 const HOLIDAYS_ISO = new Set([
   "2026-08-21",
   "2026-09-07",
+  "2026-10-14", // Squeeze Day (no classes, does not advance rotation)
   "2026-10-12", // derived from: 10/9 is day 6; 10/13 is day 7
   "2026-10-16",
   "2026-10-19",
@@ -290,12 +291,16 @@ function renderCalendar(model) {
 
       if (!info.isInstructional) {
         cell.classList.add("off");
+        if (info.offReason === "Weekend") {
+          cell.classList.add("weekend");
+        }
       }
 
       const dateRow = el("div", { className: "dateRow" });
       const dateNum = el("div", { className: "dateNum", textContent: String(day.getDate()) });
-      const badge = el("div", { className: `rotationBadge ${info.isInstructional ? "" : "empty"}` });
-      badge.textContent = info.isInstructional ? `Day ${info.rotationDay}` : "";
+      const hasRotationLabel = Number.isInteger(info.rotationDay);
+      const badge = el("div", { className: `rotationBadge ${hasRotationLabel ? "" : "empty"}` });
+      badge.textContent = hasRotationLabel ? `Day ${info.rotationDay}` : "";
 
       dateRow.appendChild(dateNum);
       dateRow.appendChild(badge);
